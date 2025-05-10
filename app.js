@@ -6,6 +6,7 @@ const winnerContainer = document.querySelector(".winner-container");
 const message = document.querySelector("#message");
 const drawContainer = document.querySelector(".draw-container");
 const drawResetBtn = document.querySelector("#draw-reset");
+const currentPlayerDisplay = document.querySelector("#current-player");
 
 // Game state
 let turnO = false;
@@ -30,6 +31,8 @@ const resetGame = () => {
   enableBoxes();
   winnerContainer.classList.add("hide");
   drawContainer.classList.add("hide");
+  currentPlayerDisplay.innerText = "X";
+  currentPlayerDisplay.style.color = "var(--x-color)";
 };
 
 // Add click event listeners to all boxes
@@ -40,11 +43,17 @@ boxes.forEach((box) => {
       box.innerText = "O";
       box.style.color = "var(--o-color)";
       turnO = false;
+      // Update display to show X is next
+      currentPlayerDisplay.innerText = "X";
+      currentPlayerDisplay.style.color = "var(--x-color)";
     } else {
       // Player X's turn
       box.innerText = "X";
       box.style.color = "var(--x-color)";
       turnO = true;
+      // Update display to show O is next
+      currentPlayerDisplay.innerText = "O";
+      currentPlayerDisplay.style.color = "var(--o-color)";
     }
     
     // Disable the clicked box
