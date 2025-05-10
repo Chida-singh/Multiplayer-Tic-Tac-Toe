@@ -52,3 +52,25 @@ body
     border-radius: 1rem;
     border: none;
 }
+
+.msg{
+    height: 30vmin;
+}
+
+#message{
+    color: wheat;
+    font-size: 5vmin;
+}
+
+.btn{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #bc85a3;
+    color: wheat;
+    border-radius: 1rem;
+    border: none;
+}
+
+.hide{
+    display: none;
+}
