@@ -3,18 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mini Game</title>
+    <title>Tic-Tac-Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="draw hide">
-        YOU BOTH SUCK L
-        <button class="btn">Reset</button>
+    <div class="draw-container hide">
+      <div class="draw-message">It's a draw!</div>
+      <button class="btn" id="draw-reset">Play Again</button>
     </div>
-    <div class="msg hide">
-        <p id ="message">Winner</p>
-        <button id="new-button" class="btn">New Game</button>
+    
+        <div class="winner-container hide">
+      <div class="winner-message">
+        <span id="message">Winner</span>
+      </div>
+      <button id="new-button" class="btn">New Game</button>
     </div>
+    
     <main>
       <h1>Tic-Tac-Toe</h1>
       <div class="container">
@@ -30,8 +37,13 @@
           <button class="box"></button>
         </div>
       </div>
-      <button class ="btn" id = "reset-button">Reset Game</button>
+      <button class="btn" id="reset-button">Reset Game</button>
     </main>
+    
+    <footer>
+      <p>Have fun playing!</p>
+    </footer>
+    
     <script src="app.js"></script>
   </body>
 </html>
