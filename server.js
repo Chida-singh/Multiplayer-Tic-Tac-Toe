@@ -1,21 +1,20 @@
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const { Server } = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: '*',
-  }
-});
+const io = new Server(server);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 let players = {};
+let currentTurn = 'X';
 
 io.on('connection', (socket) => {
   console.log(`User connected: ${socket.id}`);
 
-  // Assign player X or O
   if (!players.X) {
     players.X = socket.id;
     socket.emit('playerType', 'X');
@@ -26,14 +25,17 @@ io.on('connection', (socket) => {
     socket.emit('playerType', 'spectator');
   }
 
-  // Handle move
   socket.on('makeMove', (data) => {
-    socket.broadcast.emit('moveMade', data);
+    currentTurn = currentTurn === 'X' ? 'O' : 'X';
+    socket.broadcast.emit('opponentMove', data);
   });
 
-  // Handle disconnection
+  socket.on('resetGame', () => {
+    currentTurn = 'X';
+    io.emit('resetGame');
+  });
+
   socket.on('disconnect', () => {
-    console.log(`User disconnected: ${socket.id}`);
     if (players.X === socket.id) delete players.X;
     if (players.O === socket.id) delete players.O;
     io.emit('playerLeft');
