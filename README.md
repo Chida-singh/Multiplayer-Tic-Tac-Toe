@@ -11,7 +11,7 @@
 
 ---
 
-▶️ **Play Now:** [https://your-app-link.com](https://tic-tac-toe-fa14.onrender.com/)  
+▶️ **Play Now:** [https://tic-tac-toe-fa14.onrender.com/](https://tic-tac-toe-fa14.onrender.com/)  
 
 ## ✨ Features
 
